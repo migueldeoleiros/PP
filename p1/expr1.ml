@@ -90,15 +90,19 @@ Char.chr 67;;
 (*- : char = 'C'*)
 
 
-Char.chr (Char.code 'a' - Char.code 'A' + Char.code 'Ñ');;
+(*Char.chr (Char.code 'a' - Char.code 'A' + Char.code 'Ñ');;*)
+(*Error: no reconoce las ñ*)
 (*- : char = '\241'*)
 
 
-Char.uppercase 'ñ';;
+(*Char.uppercase 'ñ';;*)
+(*Error: no reconoce las ñ*)
+(*Alert deprecated: usar Char.uppercase_ascii*)
 (*- : char = '\209'*)
 
 
 Char.lowercase 'O';;
+(*Alert deprecated: usar Char.lowercase_ascii*)
 (*- : char = 'o'*)
 
 
@@ -222,82 +226,84 @@ let y = 5 in x + y;;
 (*- : int = 10*)
 
 x + y;;
-(* *)
+(*- : int = 10*)
 
 let x = x + y in let y = x * y in x + y + z;;
-(* *)
+(*- : int = 24*)
 
 x + y + z;;
-(* *)
+(*- : int = 10*)
 
 int_of_float;;
-(* *)
+(*- : float -> int = <fun>*)
 
 float_of_int;;
-(* *)
+(*- : int -> float = <fun>*)
 
 int_of_char;;
-(* *)
+(*- : char -> int = <fun>*)
 
 char_of_int;;
-(* *)
+(*- : int -> char = <fun>*)
 
 abs;;
-(* *)
+(*- : int -> int = <fun>*)
 
 sqrt;;
-(* *)
+(*- : float -> float = <fun>*)
 
 truncate;;
-(* *)
+(*- : float -> int = <fun>*)
 
 ceil;;
-(* *)
+(*- : float -> float = <fun>*)
 
 floor;;
-(* *)
+(*- : float -> float = <fun>*)
 
 Char.code;;
-(* *)
+(*- : char -> int = <fun>*)
 
 Char.chr;;
-(* *)
+(*- : int -> char = <fun>*)
 
 Char.uppercase;;
-(* *)
+(*Alert deprecated: usar Char.uppercase_ascii*)
+(*- : char -> char = <fun>*)
 
-Char.lowecase;;
-(* *)
+Char.lowercase;;
+(*Alert deprecated: usar Char.lowercase_ascii*)
+(*- : char -> char = <fun>*)
 
 int_of_string;;
-(* *)
+(*- : string -> int = <fun>*)
 
 string_of_int;;
-(* *)
+(*- : int -> string = <fun>*)
 
 String.length;;
-(* *)
+(*- : string -> int = <fun>*)
 
 let f = function x -> 2 * x;;
-(* *)
+(*val f : int -> int = <fun>*)
 
 f (2 + 1);;
-(* *)
+(*- : int = 6*)
 
 f 2 + 1;;
-(* *)
+(*- : int = 5*)
 
 let n = 1;;
-(* *)
+(*val n : int = 1*)
 
 let g x = x +n;;
-(* *)
+(*val g : int -> int = <fun>*)
 
 g 3;;
-(* *)
+(*- : int = 4*)
 
 let n = 5;;
-(* *)
+(*val n : int = 5*)
 
 g 3;;
-(* *)
+(*- : int = 4*)
