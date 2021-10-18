@@ -19,6 +19,11 @@ let rec last_prime_to n =
 
 let is_prime2 n = 
   let rec check_from i =
-    i >= n ||
+    (float_of_int i) >= (sqrt (float_of_int n))+.1. ||
     (n mod i <> 0 && check_from (i+1))
   in check_from 2;;
+
+(*is_prime2 1000000007;;*)
+(*is_prime2 se ejecuta instantaneamente mientras que 
+su contraparte menos eficiente tarda 20 segundo para
+este ejemplo en mi máquina*)
