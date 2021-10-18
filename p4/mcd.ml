@@ -1,3 +1,3 @@
-let rec mcd x y =
+let rec mcd (x, y) =
     if y = 0 then x
-    else mcd (x mod y) y
+    else mcd ((x mod y), y)
