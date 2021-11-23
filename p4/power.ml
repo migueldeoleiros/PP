@@ -14,5 +14,5 @@ Esto será notable en caso de números grandes, que con int se salen de rango
 
 let rec powerf x n = 
     if n = 0 then 1. 
-    else if (n mod 2 = 0) then powerf' (x*.x) (n/2)
-    else x *. powerf' (x*.x) (n/2)
+    else if (n mod 2 = 0) then powerf (x*.x) (n/2)
+    else x *. powerf (x*.x) (n/2)
