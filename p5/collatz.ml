@@ -3,10 +3,10 @@ let f n =
     else 3 * n + 1;;
 
 
-let rec orbit f n =
+let rec orbit n =
     print_int n;
     if n = 1 then print_newline()
-    else (print_string", "; 
+    else (print_string (", "); 
         orbit (f n));;
 
 
