@@ -120,6 +120,13 @@ let rec map f = function
 let rev_map f l = rev (map f l);;
 
 
+let rec map2 f l1 l2 =
+    if (length l1 != length l2)
+        then raise (Invalid_argument"map2")
+    else if (length l1 == 0) then []
+    else (f(hd l1)(hd l2))::map2 f (tl l1)(tl l2);;
+
+
 let rec fold_left f a = function
     [] -> a
     | h::t -> fold_left f (f a h) t;;
