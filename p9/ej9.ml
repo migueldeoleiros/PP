@@ -49,12 +49,13 @@ let rec divide = function
   | l -> l, [];;
 
 
-(* TODO *)
-let rec compress = function
-  | h1::h2::t -> if h1 = h2 then compress (h2::t)
-    else h1 :: compress (h2::t)
-  | l -> l;;	
-
+let compress l =
+  let rec aux acc l = match l with
+        | h1::h2::t -> if h1=h2 then aux acc (h2::t)
+                       else aux (h1::acc) (h2::t)
+        | [h] -> aux (h::acc) []
+        | []-> List.rev acc
+  in (aux [] l);;
 
 (*--------------------------------------*)
 (* IN-PROCESS *)

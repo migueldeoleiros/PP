@@ -8,12 +8,22 @@ let rec fold_tree f a = function
 
 (* Implemente sum, prod, size, inorder y mirror usando fold_tree *)
 
-let sum = ... ;;
+let rec sum = function
+    Empty -> 0
+  | Node (r, lb, rb) -> r + (sum lb) + (sum rb);;
 
-let prod = ... ;;
+let rec prod = function
+    Empty -> 1.0
+  | Node (r, lb, rb) -> r *. (prod lb) *. (prod rb);;
 
-let size = ... ;;
+let rec size = function
+	Empty -> 0
+	| Node (r,i,d) -> (size i) + (size d) + 1;;
 
-let inorder = ...;;
+let rec inorder = function
+    Empty -> []
+  | Node (r, lb, rb) -> inorder lb @ (r :: inorder rb);;
 
-let mirror = ... ;;
+let rec mirror = function
+	Empty -> Empty
+	| Node (r,i,d) -> Node (r,d,i);;
