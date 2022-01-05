@@ -15,8 +15,8 @@ let tour m n x y =
   else let rec aux solution = function
           [] -> raise Not_found
         | h::t -> if (h = y)
-          then List.rev (h::solution)
-          else try aux (h::solution) (legal_moves m n h (h::solution))
-            with Not_found -> aux solution t
-    in if x = y then [x]
-       else aux [x] (legal_moves m n x [x]);;
+                    then List.rev (h::solution)
+                  else try aux (h::solution) (legal_moves m n h (h::solution))
+                       with Not_found -> aux solution t
+       in if x = y then [x]
+          else aux [x] (legal_moves m n x [x]);;
