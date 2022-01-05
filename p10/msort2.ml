@@ -1,7 +1,6 @@
-let rec divide = function
-    [] -> [], []
-  | h::[] -> [h], []
-  | h1::h2::t -> let t1, t2 = divide t in (h1::t1, h2::t2);;
+let rec divide l = match l with
+    h1::h2::t -> let t1, t2 = divide t in (h1::t1, h2::t2)
+  | _ -> l, [];;
 
 let rec merge ord = function
     [], l | l, [] -> l
@@ -11,7 +10,7 @@ let rec merge ord = function
 let rec msort1 ord l = match l with
     [] | _::[] -> l
   | _ -> let l1, l2 = divide l in
-    merge ord (msort1 ord l1, msort1 ord l2);;
+         merge ord (msort1 ord l1, msort1 ord l2);;
 
 (* Puede ocurrir Stack Overflow con numeros muy grandes*)
 
@@ -23,6 +22,8 @@ let fromto m n =
   in auxl m n [];;
 
 let l2 = fromto 1 256000;;
+
+(* ---------------------------------------- *)
 
 let divide' l =
   let rec aux dvd1 dvd2 = function
@@ -41,9 +42,10 @@ let merge' ord (l1, l2) =
 let rec msort2 ord l = match l with
     [] | _::[] -> l
   | _ -> let l1, l2 = divide' l
-    in merge' ord (msort2 ord l1, msort2 ord l2);;
+         in merge' ord (msort2 ord l1, msort2 ord l2);;
 
-(* msort2 es ligeramente más lento que msort1 pero mucho más rápido que qsort2 
+(*TODO*)
+(* msort2 es ligeramente más lento que msort1 pero notablemente más rápido que qsort2 
    - para msort2 ordenar [1..10000] le lleva sobre 0.008646 
    - para msort1 ordenar [1..10000] le lleva sobre 0.007983 
    - para qsort2 ordenar [1..10000] le lleva sobre 2.428965 
