@@ -24,6 +24,12 @@ let fromto m n =
  *   if n < 1 then []
  *   else from1to (n-1) @ [n];; *)
 
+let from1to m n = 
+  let rec aux l i =
+    if i < 1 then l
+	else aux (i::l) (i - 1)
+  in aux [] n;;
+
 
 (* let map =
  *   List.map;; *)
@@ -80,10 +86,14 @@ let rec remove x l =
  *     h1::h2::t -> let  l1, l2 = divide t in h1::l1,h2::l2
  *   | l -> l, [];; *)
 
-(* TODO *)
-let rec divide = function
-    h1::h2::t -> let  l1, l2 = divide t in h1::l1,h2::l2
-  | l -> l, [];;
+let divide l =
+  let rec f_aux resto im = function
+	  [] -> resto
+	| h::[] -> if im then h::resto
+               else resto
+    | impar::par::t -> if im then f_aux (impar::resto) im t
+  	                   else f_aux (par::resto) im t
+  in ( List.rev (f_aux [] true l), List.rev (f_aux [] false l) );;
 
 
 (* let rec compress = function
@@ -99,12 +109,3 @@ let compress l =
         | []-> List.rev acc
   in (aux [] l);;
 
-(*--------------------------------------*)
-(* IN-PROCESS *)
-let fact n =
-	let rec innerfact n acc =
-		if n=0 then acc
-		else innerfact (n-1) (acc *. float n)
-	in
-	if n>=0 then innerfact n 1.
-	else invalid_arg "fact";;
