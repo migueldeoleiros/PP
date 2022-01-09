@@ -19,10 +19,6 @@ let sum =
 
 
 (* let rec prod = function
-let size t = 
-  let aux x l r = 
-    l + r + 1
-  in fold_tree aux 0 t;; 
  *     Empty -> 1.0
  *   | Node (x, l, r) -> x *. (prod l) *. (prod r);; *)
 
