@@ -27,4 +27,4 @@ let l1 = init 600000 (function x -> Random.int 5000);;
 
 (* qsort2 es más lento que qsort1 cuando la lista está inicializada 
    aleatoriamente o inversamente. 
-   En estos casos qsort2 fue un 116.5% más lento *)
+   En estos casos qsort2 fue un 98.5% más lento de media*)
