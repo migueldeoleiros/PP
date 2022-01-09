@@ -19,6 +19,10 @@ let sum =
 
 
 (* let rec prod = function
+let size t = 
+  let aux x l r = 
+    l + r + 1
+  in fold_tree aux 0 t;; 
  *     Empty -> 1.0
  *   | Node (x, l, r) -> x *. (prod l) *. (prod r);; *)
 
@@ -29,33 +33,33 @@ let prod =
 
 
 (* let rec size = function
- * 	Empty -> 0
+ *     Empty -> 0
  *   | Node (x, l, r) -> (size l) + (size r) + 1;; *)
 
-let size = 
-  let aux x l r =
+let size t = 
+  let aux x l r = 
     l + r + 1
-  in fold_tree aux 0;; 
+  in fold_tree aux 0 t;; 
 
 
 (* let rec inorder = function
  * 	Empty -> []
  *   | Node (x,l,r) -> (inorder r) @ [x] @ (inorder l);; *)
 
-let inorder =
+let inorder t =
   let aux x l r =
     l @ [x] @ r
-  in fold_tree aux [];;
+  in fold_tree aux [] t;;
 
 
 (* let rec mirror = function
  * 	Empty -> Empty
  * 	| Node (x, l, r) -> Node (x, r, l);; *)
 
-let mirror =
+let mirror t =
   let aux x l r =
     Node (x, r, l)
-  in fold_tree aux Empty;;
+  in fold_tree aux Empty t;;
 
 
 (*
