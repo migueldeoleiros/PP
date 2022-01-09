@@ -24,11 +24,11 @@ let fromto m n =
  *   if n < 1 then []
  *   else from1to (n-1) @ [n];; *)
 
-let from1to m n = 
-  let rec aux l i =
-    if i < 1 then l
-	else aux (i::l) (i - 1)
-  in aux [] n;;
+let from1to n =
+  let rec f i l =
+	if i > 1 then f (i-1) (i::l)
+    else 1::l
+  in List.rev (f n []);;
 
 
 (* let map =
@@ -74,7 +74,7 @@ let incseg l =
  *   | h::t -> if x = h then t
  *             else h :: remove x t;; *)
 
-let rec remove x l =
+let remove x l =
   let rec aux acc = function
       [] -> l
     | h::t -> if x = h then List.rev_append acc t
