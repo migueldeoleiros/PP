@@ -1,4 +1,3 @@
-
 type log_exp =
     Const of bool
   | Var of string
