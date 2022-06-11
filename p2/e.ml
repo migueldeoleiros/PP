@@ -1,1 +1,1 @@
-let _ = print_float(exp(1.))
+print_float(exp(1.))
